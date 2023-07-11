@@ -1,10 +1,30 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
+import { createClient } from "contentful";
 
 function App() {
-    return <></>;
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        const client = createClient({
+            space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+            environment: import.meta.env.VITE_ENVIRONMENT_NAME, // defaults to 'master' if not set
+            accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+        });
+        client
+            .getEntries()
+            .then((response) => setRecipes(response.items))
+            .catch(console.error);
+    }, []);
+    return (
+        <div className="App">
+            {recipes.map((recipe) => (
+                <div key={recipe.sys.id}>
+                    <h3>{recipe.fields.recipe1}</h3>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default App;
