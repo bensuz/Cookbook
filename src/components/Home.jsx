@@ -8,17 +8,20 @@ const Home = ({ recipes }) => {
     <>
       <p>This is the home</p>
       <div className="App">
+        
         <div>
           {recipes.map((recipe) => (
             <div key={recipe.sys.id}>
+            <Link to={`/recipes/${recipe.sys.id}`}>
               <h3>{recipe.fields.recipe1}</h3>
               {/* <p>{recipe.fields.ingridients}</p> */}
               <img src={recipe.fields.recipe1Media.fields.file.url}></img>
-              <Link to={`/recipes/${recipe.sys.id}`}>Show Details</Link>
+            </Link>
+              </div>
+            ))}
             </div>
-          ))}
         </div>
-      </div>
+      
     </>
   );
 };
