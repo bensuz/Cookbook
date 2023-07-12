@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
 import "./App.css";
+import Quince from "./components/Quince";
+import Homepage from "./components/Homepage";
 import { createClient } from "contentful";
+import { useState, useEffect } from "react";
 
 function App() {
-    const [recipes, setRecipes] = useState([]);
-
+    const [quinceRecipe, setQuinceRecipe] = useState([]);
     useEffect(() => {
         const client = createClient({
             space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
@@ -13,20 +14,16 @@ function App() {
         });
         client
             .getEntries()
-            .then((response) => setRecipes(response.items))
+            .then((response) => setQuinceRecipe(response.items))
             .catch(console.error);
     }, []);
-    console.log(recipes);
+    console.log(quinceRecipe);
+
     return (
-        <div className="App">
-            {recipes.map((recipe) => (
-                <div key={recipe.sys.id}>
-                    <h3>{recipe.fields.recipe1}</h3>
-                    <p>{recipe.fields.ingridients}</p>
-                    <img src="{recipe.fields.recipe1Media.fields.url}"></img>
-                </div>
-            ))}
-        </div>
+        <>
+            <Homepage />
+            <Quince />
+        </>
     );
 }
 
