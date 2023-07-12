@@ -1,28 +1,40 @@
 import "./App.css";
-import Quince from "./components/Quince";
-import Homepage from "./components/Homepage";
+import { Routes, Route } from "react-router-dom";
 import { createClient } from "contentful";
-import { useState, useEffect } from "react";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Recipes from "./components/Recipes";
+import Travel from "./components/Travel";
 
 function App() {
-    const [quinceRecipe, setQuinceRecipe] = useState([]);
+    const [recipes, setRecipes] = useState([]);
+    const client = createClient({
+        space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+        environment: import.meta.env.VITE_ENVIRONMENT_NAME, // defaults to 'master' if not set
+        accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+    });
+    const fetchData = async () => {
+        try {
+            const response = await client.getEntries();
+            setRecipes(response.items);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     useEffect(() => {
-        const client = createClient({
-            space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
-            environment: import.meta.env.VITE_ENVIRONMENT_NAME, // defaults to 'master' if not set
-            accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
-        });
-        client
-            .getEntries()
-            .then((response) => setQuinceRecipe(response.items))
-            .catch(console.error);
+        fetchData();
     }, []);
-    console.log(quinceRecipe);
-
     return (
         <>
-            <Homepage />
-            <Quince />
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home recipes={recipes} />} />
+                <Route
+                    path="/Recipes/:recipeId"
+                    element={<Recipes recipes={recipes} />}
+                />
+                <Route path="/Travel" element={<Travel />} />
+            </Routes>
         </>
     );
 }
