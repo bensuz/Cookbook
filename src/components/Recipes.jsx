@@ -44,14 +44,6 @@ const Recipes = () => {
                         autoplay={true}
                         className="w-1/3"
                     />
-                    {/* <div className="flex flex-col justify-center items-center">
-                        <img
-                            className="w-32 mt-32 animate-bounce"
-                            src={egg}
-                            alt=""
-                        />
-                        <img className="w-72  ml-24 " src={pan} alt="" />
-                    </div> */}
                 </div>
             ) : (
                 <div>
