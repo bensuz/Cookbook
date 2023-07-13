@@ -25,17 +25,21 @@ function App() {
         fetchData();
     }, []);
     return (
-        <>
-            <NavBar />
+        <div className="sm:mx-20 flex justify-center">
+            <NavBar className="flex row gap-16" />
             <Routes>
                 <Route path="/" element={<Home recipes={recipes} />} />
+                <Route
+                    path="/Recipes"
+                    element={<Recipes recipes={recipes} />}
+                />
                 <Route
                     path="/Recipes/:recipeId"
                     element={<Recipes recipes={recipes} />}
                 />
                 <Route path="/Travel" element={<Travel />} />
             </Routes>
-        </>
+        </div>
     );
 }
 
