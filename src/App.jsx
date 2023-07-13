@@ -6,6 +6,8 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
 import Travel from "./components/Travel";
+import Footer from "./components/Footer";
+import RecipeTab from "./components/RecipeTab";
 import "./index.css";
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
                 <Route path="/" element={<Home recipes={recipes} />} />
                 <Route
                     path="/Recipes"
-                    element={<Recipes recipes={recipes} />}
+                    element={<RecipeTab recipes={recipes} />}
                 />
                 <Route
                     path="/Recipes/:recipeId"
@@ -41,6 +43,7 @@ function App() {
                 />
                 <Route path="/Travel" element={<Travel />} />
             </Routes>
+            <Footer />
         </div>
     );
 }

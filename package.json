@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.0",
+    "@lottiefiles/lottie-player": "^2.0.2",
     "contentful": "^10.3.4",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1"
