@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
 import Travel from "./components/Travel";
+import "./index.css";
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -26,8 +27,8 @@ function App() {
         fetchData();
     }, []);
     return (
-        <div className="sm:mx-20 flex justify-center">
-            <NavBar className="flex row gap-16" />
+        <div>
+            <NavBar />
             <Routes>
                 <Route path="/" element={<Home recipes={recipes} />} />
                 <Route
