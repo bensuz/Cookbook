@@ -1,4 +1,6 @@
+import Map from "./Map"
+
 const Travel = () => {
-    return <p className="bg-sky-500/10">This is the Travel</p>;
+    return <Map/>;
 };
 export default Travel;
