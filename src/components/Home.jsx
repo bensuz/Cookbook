@@ -3,7 +3,10 @@
 // import { createClient } from "contentful";
 // import {App} from "../App"
 import { Link } from "react-router-dom";
-import girlAvatar from "../assets/img/girlavatar.jpg";
+import Keerthana from "../assets/img/keerthana.jpg";
+import Phoebe from "../assets/img/phoebe.jpg";
+import Su from "../assets/img/Su.jpg";
+import Gisela from "../assets/img/gisela.png";
 
 const Home = ({ recipes }) => {
     return (
@@ -64,7 +67,7 @@ const Home = ({ recipes }) => {
                     <div className="flex flex-col items-center justify-center">
                         <img
                             className="w-28 rounded-full"
-                            src={girlAvatar}
+                            src={Su}
                             alt=""
                         />
                         <p>Bensu Zorlu</p>
@@ -72,7 +75,7 @@ const Home = ({ recipes }) => {
                     <div className="flex flex-col items-center justify-center">
                         <img
                             className="w-28 rounded-full"
-                            src={girlAvatar}
+                            src={Keerthana}
                             alt=""
                         />
                         <p>Keerthana Prabhakar</p>
@@ -80,15 +83,15 @@ const Home = ({ recipes }) => {
                     <div className="flex flex-col items-center justify-center">
                         <img
                             className="w-28 rounded-full"
-                            src={girlAvatar}
+                            src={Phoebe}
                             alt=""
                         />
-                        <p>Phoebe StLeger</p>
+                        <p>Phoebe St Leger</p>
                     </div>
                     <div className="flex flex-col items-center justify-center">
                         <img
                             className="w-28 rounded-full"
-                            src={girlAvatar}
+                            src={Gisela}
                             alt=""
                         />
                         <p>Gisella Haladin</p>
