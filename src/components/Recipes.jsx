@@ -32,7 +32,7 @@ const Recipes = () => {
     }, [client, recipeId]);
 
     return (
-        <>
+        <div className="flex flex-col justify-center items-center">
             {isLoading ? (
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="text-center text-3xl">
@@ -46,22 +46,24 @@ const Recipes = () => {
                     />
                 </div>
             ) : (
-                <div>
+                <div className="border-4 w-3/4 flex flex-col items-center justify-center">
                     {dish && (
                         <>
-                            <h2>{dish.fields.recipe1}</h2>
+                            <h2 className="text-4xl my-4">{dish.fields.recipe1}</h2>
                             <img
                                 src={dish.fields.recipe1Media.fields.file.url}
+                                className="rounded-xl mb-6"
                                 alt="Recipe"
                             />
-
+                            <div className="flex flex-col items-start mx-10">
                             <RichText document={dish.fields.ingridientsNew} />
                             <RichText document={dish.fields.directions} />
+                            </div>
                         </>
                     )}
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
